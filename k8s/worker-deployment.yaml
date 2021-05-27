@@ -18,9 +18,9 @@ spec:
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
-              name: REDIS_PORT
+            - name: REDIS_PORT
               value: '6379' # port of ClusterIP managing REDIS
-# NOTE: we should always provide our environment variables at string that's why we have wrapped the port number in ' '
+# NOTE: we should always provide our environment variables at string that's why we have wrapped the port number in " "
 # NO SERVICE AND PORT HAS BEEN ASSIGNED TO WORKER
 # 1. Because no other object is going to access worker directly
 # 2. and due to above reason we have not opened any port on worker object
