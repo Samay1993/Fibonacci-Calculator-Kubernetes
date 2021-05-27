@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: worker
+  template:
+    metadata:
+      labels:
+        component: worker
+    spec:
+      containers:
+        - name: worker
+          image: samay1993/multi-worker
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+              name: REDIS_PORT
+              value: '6379' # port of ClusterIP managing REDIS
+# NOTE: we should always provide our environment variables at string that's why we have wrapped the port number in ' '
+# NO SERVICE AND PORT HAS BEEN ASSIGNED TO WORKER
+# 1. Because no other object is going to access worker directly
+# 2. and due to above reason we have not opened any port on worker object
+# 3. We only create service when we want to have requests going into a set of pods
+# 4. In our project, nothing is going to make an unprompted request to worker 
+# 5. worker is going to connect to Redis 

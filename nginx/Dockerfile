@@ -1,6 +1,0 @@
-# PRODUCTION ENVIRONMENT DOCKERFILE
-FROM nginx
-
-COPY ./default.conf /etc/nginx/conf.d/default.conf
-
-# we are copying default.conf file to nginx container's file system and overriding the defaut configuration of nginx with our custom configuration
