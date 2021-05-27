@@ -27,7 +27,7 @@ spec:
               subPath: postgres
           env: # in this block we are overriding the default password of Postgres with the password we provided in secret
               # run command "kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf"
-            - name: PGPASSWORD
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: pgpassword #name of the secret
